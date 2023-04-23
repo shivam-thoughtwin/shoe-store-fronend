@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { BsChevronDown } from "react-icons/bs";
 
-const Menu = ({ showCartMenu, setShowCartMenu }) => {
+const Menu = ({ showCatMenu, setShowCatMenu, categories }) => {
   const data = [
     { id: 1, name: "Home", url: "/" },
     { id: 2, name: "About", url: "/about" },
@@ -25,23 +25,25 @@ const Menu = ({ showCartMenu, setShowCartMenu }) => {
             {!!item?.subMenu ? (
               <li
                 className="cursor-pointer flex items-center gap-2 relative"
-                onMouseEnter={() => setShowCartMenu(true)}
-                onMouseLeave={() => setShowCartMenu(false)}
+                onMouseEnter={() => setShowCatMenu(true)}
+                onMouseLeave={() => setShowCatMenu(false)}
               >
                 {item.name}
                 <BsChevronDown size={14} />
-                {showCartMenu && (
+                {showCatMenu && (
                   <ul className="bg-white absolute top-6 left-0 min-w-[250px] px-1 py-1 text-black shadow-lg ">
-                    {subMenuData.map((submenu) => {
+                    {categories?.map(({ attributes: c, id }) => {
                       return (
                         <Link
-                          key={submenu.id}
-                          href="/"
-                          onClick={() => setShowCartMenu(false)}
+                          key={id}
+                          href={`/category/${c?.slug}`}
+                          onClick={() => setShowCatMenu(false)}
                         >
                           <li className="h-12 flex justify-between items-center px-3 hover:bg-black/[0.03] rounded-md">
-                            {submenu.name}
-                            <span className="opacity-50 text-sm">78</span>
+                            {c.name}
+                            <span className="opacity-50 text-sm">
+                              ({`${c?.products?.data?.length}`})
+                            </span>
                           </li>
                         </Link>
                       );
