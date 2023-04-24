@@ -17,8 +17,8 @@ const subMenuData = [
 ];
 
 const MenuMobile = ({
-  showCartMenu,
-  setShowCartMenu,
+  showCatMenu,
+  setShowCatMenu,
   setMobileMenu,
   categories,
 }) => {
@@ -30,14 +30,14 @@ const MenuMobile = ({
             {!!item?.subMenu ? (
               <li
                 className="cursor-pointer py-4 px-5 border-b flex flex-col relative"
-                onClick={() => setShowCartMenu(!showCartMenu)}
+                onClick={() => setShowCatMenu(!showCatMenu)}
               >
                 <div className="flex justify-between items-center">
                   {item.name}
                   <BsChevronDown size={14} />
                 </div>
 
-                {showCartMenu && (
+                {showCatMenu && (
                   <ul className="bg-black/[0.05] -mx-5 mt-4 -mb-4">
                     {categories?.map(({ attributes: c, id }) => {
                       return (
