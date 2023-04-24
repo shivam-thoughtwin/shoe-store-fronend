@@ -15,7 +15,7 @@ export default function Home({ products }) {
                     Cushioning for Your Miles
                 </div>
                 <div className="text-md md:text-xl">
-                    A lightweight Nike ZoomX midsole is combined with
+                    A Lightweight Nike ZoomX midsole is combined with
                     increased stack heights to help provide cushioning
                     during extended stretches of running.
                 </div>
